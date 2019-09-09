@@ -135,8 +135,8 @@ modules:
       - make install BUILD_STATIC_LIB=0 DEBUG=0 PREFIX=/ DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://ftp.gwdg.de/pub/linux/misc/lm-sensors/lm_sensors-3.4.0.tar.bz2
-        sha256: e0579016081a262dd23eafe1d22b41ebde78921e73a1dcef71e05e424340061f
+        url: https://github.com/lm-sensors/lm-sensors/archive/V3-5-0.tar.gz
+        sha256: f671c1d63a4cd8581b3a4a775fd7864a740b15ad046fe92038bcff5c5134d7e0
   - name: libkmod
     buildsystem: simple
     build-commands:
@@ -191,8 +191,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
       - type: archive
-        url: https://acpica.org/sites/acpica/files/acpica-unix-20190215.tar.gz
-        sha256: 71133ab2b1b2e2f176a9b5081060571977a3d2c91b36722e198bffa7ce9b0d37
+        url: https://acpica.org/sites/acpica/files/acpica-unix-20190816.tar.gz
+        sha256: 7aec4dc88a3ba148eecd898e59fb5378573eb6a94585e5538e0b396840d0fc5c
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -226,8 +226,8 @@ modules:
       - install -D ./dmesg $FLATPAK_DEST/bin/dmesg
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.32/util-linux-2.32.1.tar.gz
-        sha256: 3bbf9f3d4a33d6653cf0f7e4fc422091b6a38c3b1195c0ee716c67148a1a7122
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-2.34.tar.xz
+        sha256: 743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5
   - name: libx86emu
     buildsystem: simple
     build-commands:
@@ -423,7 +423,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.4/hw-probe-1.4-AI.tar.gz
-        sha256: 8979ec4affbf7dcae224383d4946eaa4878068fde88b3c4d8c4acff8c7214c45
+        sha256: 303b9ff37f1c1d140631bb86e337c50695d40155b33da5057e716c85ea4dcade
   - name: perl-base
     buildsystem: simple
     build-commands:
@@ -434,5 +434,5 @@ modules:
       - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
     sources:
       - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.28.0.tar.gz
-        sha256: 7e929f64d4cb0e9d1159d4a59fc89394e27fa1f7004d0836ca0d514685406ea8
+        url: https://www.cpan.org/src/5.0/perl-5.28.2.tar.xz
+        sha256: 0b0189bfa4b2da20e899b4bdd746ac402e8f746a58e4fcf5516484157f2aab07
