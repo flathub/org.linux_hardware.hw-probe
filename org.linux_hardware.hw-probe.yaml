@@ -165,6 +165,7 @@ modules:
   - name: usbutils
     buildsystem: simple
     build-commands:
+      - sed -i -e 's/usbhid-dump//' Makefile.*
       - ./configure --prefix=/ LIBUSB_CFLAGS='-I'$FLATPAK_DEST'/include/libusb-1.0' LIBUSB_LIBS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lusb-1.0'
       - sed -i -e 's/ -g / -s /' Makefile
       - make -j $FLATPAK_BUILDER_N_JOBS
@@ -423,8 +424,8 @@ modules:
       - install -D flatpak/pci.ids $FLATPAK_DEST/share/pci.ids
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.4/hw-probe-1.4-AI.tar.gz
-        sha256: 097a6658dd011e2deefd80ea14b6227603df9fc2559ab7ebd1f93ef8a880adf1
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.5/hw-probe-1.5-AI.tar.gz
+        sha256: 39b14b0c115c2d3e838b0f3ab5a4c9b01bf3b60e57ff3417762e73708d104567
   - name: perl-base
     buildsystem: simple
     build-commands:
