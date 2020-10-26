@@ -113,8 +113,8 @@ modules:
       - make install prefix=/ DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.2.tar.xz
-        sha256: 077006fa2da0d06d6383728112f2edef9684e9c8da56752e97cd45a11f838edd
+        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.3.tar.xz
+        sha256: 82c737a780614c38a783e8055340d295e332fb12c7f418b5d21a0797d3fb1455
   - name: iproute2
     buildsystem: simple
     build-commands:
@@ -192,8 +192,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
       - type: archive
-        url: https://acpica.org/sites/acpica/files/acpica-unix-20200110.tar.gz
-        sha256: 9d3f60fbe801cf1049f854de23da5c9a569a34267b27b97fab3d66a68c5266b1
+        url: https://acpica.org/sites/acpica/files/acpica-unix-20200925.tar.gz
+        sha256: d44388e21e3d2e47c6d39e9c897935d3f775f04fec76271dcba072c74f834589
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -229,8 +229,8 @@ modules:
       - install -D ./lscpu $FLATPAK_DEST/bin/lscpu
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.34/util-linux-2.34.tar.xz
-        sha256: 743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.tar.xz
+        sha256: 9e4b1c67eb13b9b67feb32ae1dc0d50e08ce9e5d82e1cccd0ee771ad2fa9e0b1
   - name: libx86emu
     buildsystem: simple
     build-commands:
@@ -261,7 +261,7 @@ modules:
       - aarch64
     buildsystem: simple
     build-commands:
-      - echo '21.68' > VERSION
+      - echo '21.70' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
@@ -269,14 +269,14 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.68.tar.gz
-        sha256: 066c3cd8802d81b5a55a3a6ba55095eba613e817c60ebae8be3465e7e702c216
+        url: https://github.com/openSUSE/hwinfo/archive/21.70.tar.gz
+        sha256: bc3c4a4498e4abc32a54497ced715bbae5dfd19dd999da294bca6d69fea2db52
   - name: hwinfo
     only-arches:
       - aarch64
     buildsystem: simple
     build-commands:
-      - echo '21.68' > VERSION
+      - echo '21.70' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - make
@@ -284,8 +284,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.68.tar.gz
-        sha256: 066c3cd8802d81b5a55a3a6ba55095eba613e817c60ebae8be3465e7e702c216
+        url: https://github.com/openSUSE/hwinfo/archive/21.70.tar.gz
+        sha256: bc3c4a4498e4abc32a54497ced715bbae5dfd19dd999da294bca6d69fea2db52
   - name: perl-uri
     buildsystem: simple
     build-commands:
@@ -426,7 +426,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.5/hw-probe-1.5-AI.tar.gz
-        sha256: f968f99741067c6f682d00df16c18d337b570e37da62c002e82c05eb0cd2eaa1
+        sha256: 0bb880453e5b090818d857420d3a76efcff1c257dfefe552d656541872929a2c
   - name: perl-base
     buildsystem: simple
     build-commands:
