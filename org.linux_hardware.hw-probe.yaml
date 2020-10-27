@@ -1,6 +1,6 @@
 app-id: org.linux_hardware.hw-probe
 runtime: org.freedesktop.Platform
-runtime-version: "18.08"
+runtime-version: "19.08"
 sdk: org.freedesktop.Sdk
 command: hw-probe
 finish-args:
@@ -437,5 +437,5 @@ modules:
       - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
     sources:
       - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.28.2.tar.xz
-        sha256: 0b0189bfa4b2da20e899b4bdd746ac402e8f746a58e4fcf5516484157f2aab07
+        url: https://www.cpan.org/src/5.0/perl-5.28.3.tar.xz
+        sha256: 77dc1ddf541643af14d585867d3d0741cce45d0dbe8f1467024e63165d9e2fc5
