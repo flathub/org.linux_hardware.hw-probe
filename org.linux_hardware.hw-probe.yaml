@@ -259,6 +259,7 @@ modules:
   - name: hwinfo
     skip-arches:
       - aarch64
+      - arm
     buildsystem: simple
     build-commands:
       - echo '21.70' > VERSION
@@ -274,6 +275,7 @@ modules:
   - name: hwinfo
     only-arches:
       - aarch64
+      - arm
     buildsystem: simple
     build-commands:
       - echo '21.70' > VERSION
