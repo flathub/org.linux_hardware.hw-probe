@@ -243,8 +243,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/wfeldt/libx86emu/archive/2.1.tar.gz
-        sha256: 89fd46760a02e2337506e77e152469baae4ff1d59413277b0954b3fe0f39cbfb
+        url: https://github.com/wfeldt/libx86emu/archive/3.1.tar.gz
+        sha256: 70b574ed84dcba2dc4f54a9a1c14539e84ddbe628842c638a2f98d987d879dac
   - name: lex
     buildsystem: simple
     build-commands:
@@ -374,8 +374,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/E/ET/ETHER/libwww-perl-6.35.tar.gz
-        sha256: dda2578d7b32152c4afce834761a61d117de286c705a9f7972c7ac6032ca5953
+        url: https://cpan.metacpan.org/authors/id/E/ET/ETHER/libwww-perl-6.36.tar.gz
+        sha256: 75c034ab4b37f4b9506dc644300697505582cf9545bcf2e2079e7263f675290a
   - name: perl-parent
     buildsystem: simple
     build-commands:
