@@ -192,8 +192,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
       - type: archive
-        url: https://acpica.org/sites/acpica/files/acpica-unix-20200925.tar.gz
-        sha256: d44388e21e3d2e47c6d39e9c897935d3f775f04fec76271dcba072c74f834589
+        url: https://acpica.org/sites/acpica/files/acpica-unix-20201113.tar.gz
+        sha256: 48c4e0c07b42581d017487cc9264470e6420605ddd24cbb5d16410d02a771461
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -202,8 +202,8 @@ modules:
       - install -D INST/sbin/hdparm $FLATPAK_DEST/sbin/hdparm
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.4/hdparm-9.58.tar.gz
-        sha256: 9ae78e883f3ce071d32ee0f1b9a2845a634fc4dd94a434e653fdbef551c5e10f
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.5/hdparm-9.60.tar.gz
+        sha256: 8397739c73e44d5ab96c4aef28fa9c0147276d53a1b5657ce04c4565cf6635cc
   - name: smartmontools
     buildsystem: simple
     build-commands:
@@ -262,7 +262,7 @@ modules:
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.70' > VERSION
+      - echo '21.71' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
@@ -270,15 +270,15 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.70.tar.gz
-        sha256: bc3c4a4498e4abc32a54497ced715bbae5dfd19dd999da294bca6d69fea2db52
+        url: https://github.com/openSUSE/hwinfo/archive/21.71.tar.gz
+        sha256: c4c573eb15cbc10103f5044b485d7e4ff941500ed559743a1c98e6a6deb0ebda
   - name: hwinfo
     only-arches:
       - aarch64
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.70' > VERSION
+      - echo '21.71' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - make
@@ -286,8 +286,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.70.tar.gz
-        sha256: bc3c4a4498e4abc32a54497ced715bbae5dfd19dd999da294bca6d69fea2db52
+        url: https://github.com/openSUSE/hwinfo/archive/21.71.tar.gz
+        sha256: c4c573eb15cbc10103f5044b485d7e4ff941500ed559743a1c98e6a6deb0ebda
   - name: perl-uri
     buildsystem: simple
     build-commands:
@@ -428,7 +428,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.5/hw-probe-1.5-AI.tar.gz
-        sha256: 78ab863f74048999e7e1aaf07f431de63cef22a2b3acbc8fbd50e4964a988178
+        sha256: 97aaddd6755bc80364cf00fc931bf3adc90de21f1893e82e7c69128965c296c7
   - name: perl-base
     buildsystem: simple
     build-commands:
