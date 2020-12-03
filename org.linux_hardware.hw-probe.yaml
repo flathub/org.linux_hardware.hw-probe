@@ -308,8 +308,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.18.tar.gz
-        sha256: d060d170d388b694c58c14f4d13ed908a2807f0e581146cef45726641d809112
+        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.26.tar.gz
+        sha256: 6ce6c359de75c3bb86696a390189b485ec93e3ffc55326b6d044fa900f1725e1
   - name: perl-net-http
     buildsystem: simple
     build-commands:
@@ -319,8 +319,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.18.tar.gz
-        sha256: 7e42df2db7adce3e0eb4f78b88c450f453f5380f120fd5411232e03374ba951c
+        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.19.tar.gz
+        sha256: 52b76ec13959522cae64d965f15da3d99dcb445eddd85d2ce4e4f4df385b2fc4
   - name: perl-try-tiny
     buildsystem: simple
     build-commands:
@@ -385,8 +385,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.237.tar.gz
-        sha256: 1089d9648565c1d1e655fa4cb603272d3126747b7b5f836ffee685e27e53caae
+        url: https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.238.tar.gz
+        sha256: 38f58fdef3e28a194c9c8d0dc5d02672faf93c069f40c5bcb1fabeadbbc4d2d1
   - name: perl-time-local
     buildsystem: simple
     build-commands:
@@ -396,8 +396,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Time-Local-1.28.tar.gz
-        sha256: 9278b9e5cc99dcbb0fd27a43e914828b59685601edae082889b5ee7266afe10e
+        url: https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Time-Local-1.30.tar.gz
+        sha256: c7744f6b2986b946d3e2cf034df371bee16cdbafe53e945abb1a542c4f8920cb
   - name: perl-data-dumper
     buildsystem: simple
     build-commands:
@@ -439,5 +439,5 @@ modules:
       - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
     sources:
       - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.28.3.tar.xz
-        sha256: 77dc1ddf541643af14d585867d3d0741cce45d0dbe8f1467024e63165d9e2fc5
+        url: https://www.cpan.org/src/5.0/perl-5.32.0.tar.xz
+        sha256: 6f436b447cf56d22464f980fac1916e707a040e96d52172984c5d184c09b859b
