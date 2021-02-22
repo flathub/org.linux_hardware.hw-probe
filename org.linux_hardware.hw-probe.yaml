@@ -262,7 +262,7 @@ modules:
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.71' > VERSION
+      - echo '21.72' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
@@ -270,15 +270,15 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.71.tar.gz
-        sha256: c4c573eb15cbc10103f5044b485d7e4ff941500ed559743a1c98e6a6deb0ebda
+        url: https://github.com/openSUSE/hwinfo/archive/21.72.tar.gz
+        sha256: 60eb6cde92512f12e67139b57bff03b1deb2b56e614d6023068b09560d5255c2
   - name: hwinfo
     only-arches:
       - aarch64
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.71' > VERSION
+      - echo '21.72' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - make
@@ -286,8 +286,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.71.tar.gz
-        sha256: c4c573eb15cbc10103f5044b485d7e4ff941500ed559743a1c98e6a6deb0ebda
+        url: https://github.com/openSUSE/hwinfo/archive/21.72.tar.gz
+        sha256: 60eb6cde92512f12e67139b57bff03b1deb2b56e614d6023068b09560d5255c2
   - name: perl-uri
     buildsystem: simple
     build-commands:
@@ -428,7 +428,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.5/hw-probe-1.5-AI.tar.gz
-        sha256: 248477e281e8b4f51f31d8581492d21fd0bfb64f7a29eca700f0cbf77434bd4d
+        sha256: 45d1d1f4182bf182fe5fd015f250d4c695f449c547f2560ef51f837718415c61
   - name: perl-base
     buildsystem: simple
     build-commands:
