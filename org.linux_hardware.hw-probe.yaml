@@ -124,8 +124,8 @@ modules:
       - install -D ./ip/ip $FLATPAK_DEST/sbin/ip
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.14.0.tar.xz
-        sha256: 210fa785a52f3763c4287fd5ae63e246f6311bfaa48c424baab6d383bb7591d4
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.9.0.tar.xz
+        sha256: a25dac94bcdcf2f73316c7f812115ea7a5710580bad892b08a83d00c6b33dacf
   - name: lm-sensors
     buildsystem: simple
     build-commands:
