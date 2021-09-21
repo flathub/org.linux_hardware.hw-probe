@@ -145,6 +145,7 @@ modules:
       - make -j $FLATPAK_BUILDER_N_JOBS
       - find . -type f | perl -lne 'print if -B and -x' | xargs strip
       - make install DESTDIR=$FLATPAK_DEST
+      - install -D ./tools/lsmod $FLATPAK_DEST/bin/lsmod
     sources:
       - type: archive
         url: https://cdn.kernel.org/pub/linux/utils/kernel/kmod/kmod-12.tar.xz
