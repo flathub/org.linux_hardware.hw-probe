@@ -412,6 +412,14 @@ modules:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
         sha256: 3aa4ac1b042b3880438165fb2b2139d377564a8e9928ffe689ede5304ee90558
+  - name: python3-qt5
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-index --find-links=file://$PWD --prefix=$FLATPAK_DEST PyQt5
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz
+        sha256: 80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -429,7 +437,17 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: 332853d17826cebcd75d77ad1b72152f0937df085c7eef6d8de8a268869a45ec
+        sha256: 47238c23ebec2ba0b7a88092ed70b2e879a547b5cd8ff15b5b48ed694787a1dc
+  - name: hw-probe-pyqt5-gui
+    buildsystem: simple
+    build-commands:
+      - mv Resources Hardware\ Probe $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
+      - ln -s $FLATPAK_DEST/share/hw-probe-pyqt5-gui/Hardware\ Probe $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
+      - chmod 777 $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-pyqt5-gui-1.6-AI.tar.gz
+        sha256: 0e8ff40be0e4c2655dba975546b271c2e74848bebeaeb30d09363520c2a0d201
   - name: perl-base
     buildsystem: simple
     build-commands:
