@@ -16,10 +16,6 @@ finish-args:
   - --env=PERL5LIB=/app/share/perl5:/app/lib/x86_64-linux-gnu/perl-base:/app/lib/i386-linux-gnu/perl-base
   - --env=LD_LIBRARY_PATH=/app/lib/x86_64-linux-gnu/:/app/lib/i386-linux-gnu/:/app/lib64:/app/lib
   - --env=LC_ALL=C
-build-options:
-      env:
-        - PERL5LIB=/app/share/automake-1.10/
-        - ACLOCAL_PATH=/app/share/aclocal
 cleanup:
   - /include
   - /man
