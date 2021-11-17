@@ -381,35 +381,6 @@ modules:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
         sha256: 3aa4ac1b042b3880438165fb2b2139d377564a8e9928ffe689ede5304ee90558
-  - name: hw-probe
-    buildsystem: simple
-    build-commands:
-      - make install DESTDIR=$FLATPAK_DEST prefix=/
-      - mv $FLATPAK_DEST/bin/hw-probe $FLATPAK_DEST/bin/hw-probe-flatpak
-      - install -m 777 -D flatpak/hw-probe.sh $FLATPAK_DEST/bin/hw-probe
-      - install -D flatpak/PERL5_BASE $FLATPAK_DEST/share/PERL5_BASE
-      - install -D flatpak/hw-probe.appdata.xml $FLATPAK_DEST/share/metainfo/org.linux_hardware.hw-probe.appdata.xml
-      - install -D flatpak/icon-256x256.png $FLATPAK_DEST/share/icons/hicolor/256x256/apps/org.linux_hardware.hw-probe.png
-      - install -D flatpak/icon-128x128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/org.linux_hardware.hw-probe.png
-      - install -D flatpak/icon-64x64.png $FLATPAK_DEST/share/icons/hicolor/64x64/apps/org.linux_hardware.hw-probe.png
-      - install -D flatpak/hw-probe.desktop $FLATPAK_DEST/share/applications/org.linux_hardware.hw-probe.desktop
-      - install -D flatpak/usb.ids $FLATPAK_DEST/share/usb.ids
-      - install -D flatpak/pci.ids $FLATPAK_DEST/share/pci.ids
-    sources:
-      - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: aca1e14e2834a0d51c34498c8c38f1f4dc5b9575f5a7cae21e7d6fc2105bac70
-  - name: hw-probe-pyqt5-gui
-    buildsystem: simple
-    build-commands:
-      - mkdir -p $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
-      - mv Resources Hardware\ Probe $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
-      - ln -s $FLATPAK_DEST/share/hw-probe-pyqt5-gui/Hardware\ Probe $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
-      - chmod 777 $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
-    sources:
-      - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-pyqt5-gui-1.6-AI.tar.gz
-        sha256: ad292a720a8816b3f1251a499aea7112e4ed437eda92212d2d1562e813731a68
   - name: perl-base
     buildsystem: simple
     build-commands:
@@ -493,3 +464,32 @@ modules:
       - type: archive
         url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
         sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
+  - name: hw-probe
+    buildsystem: simple
+    build-commands:
+      - make install DESTDIR=$FLATPAK_DEST prefix=/
+      - mv $FLATPAK_DEST/bin/hw-probe $FLATPAK_DEST/bin/hw-probe-flatpak
+      - install -m 777 -D flatpak/hw-probe.sh $FLATPAK_DEST/bin/hw-probe
+      - install -D flatpak/PERL5_BASE $FLATPAK_DEST/share/PERL5_BASE
+      - install -D flatpak/hw-probe.appdata.xml $FLATPAK_DEST/share/metainfo/org.linux_hardware.hw-probe.appdata.xml
+      - install -D flatpak/icon-256x256.png $FLATPAK_DEST/share/icons/hicolor/256x256/apps/org.linux_hardware.hw-probe.png
+      - install -D flatpak/icon-128x128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/org.linux_hardware.hw-probe.png
+      - install -D flatpak/icon-64x64.png $FLATPAK_DEST/share/icons/hicolor/64x64/apps/org.linux_hardware.hw-probe.png
+      - install -D flatpak/hw-probe.desktop $FLATPAK_DEST/share/applications/org.linux_hardware.hw-probe.desktop
+      - install -D flatpak/usb.ids $FLATPAK_DEST/share/usb.ids
+      - install -D flatpak/pci.ids $FLATPAK_DEST/share/pci.ids
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
+        sha256: aca1e14e2834a0d51c34498c8c38f1f4dc5b9575f5a7cae21e7d6fc2105bac70
+  - name: hw-probe-pyqt5-gui
+    buildsystem: simple
+    build-commands:
+      - mkdir -p $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
+      - mv Resources Hardware\ Probe $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
+      - ln -s $FLATPAK_DEST/share/hw-probe-pyqt5-gui/Hardware\ Probe $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
+      - chmod 777 $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-pyqt5-gui-1.6-AI.tar.gz
+        sha256: ad292a720a8816b3f1251a499aea7112e4ed437eda92212d2d1562e813731a68
