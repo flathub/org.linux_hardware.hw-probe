@@ -1,7 +1,7 @@
 app-id: org.linux_hardware.hw-probe
-runtime: org.freedesktop.Platform
-runtime-version: "21.08"
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+runtime-version: "5.15"
+sdk: org.kde.Sdk
 command: hw-probe
 finish-args:
   - --share=network
@@ -10,6 +10,8 @@ finish-args:
   - --filesystem=/var/log:ro
   - --filesystem=/sys:ro
   - --filesystem=/dev
+  - --socket=wayland
+  - --socket=x11
   - --env=PATH=/usr/bin:/bin:/usr/sbin:/sbin:/app/bin:/app/sbin
   - --env=PERL5LIB=/app/share/perl5:/app/lib/x86_64-linux-gnu/perl-base:/app/lib/i386-linux-gnu/perl-base
   - --env=LD_LIBRARY_PATH=/app/lib/x86_64-linux-gnu/:/app/lib/i386-linux-gnu/:/app/lib64:/app/lib
@@ -73,6 +75,9 @@ cleanup:
   - /etc/smartd.conf
   - /etc/smartd_warning.sh
   - /var/lib
+  - /lib/*.a
+  - /lib/*.la
+  - /usr
 modules:
   - name: automake
     buildsystem: simple
@@ -257,38 +262,6 @@ modules:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.4/flex-20181004.tar.gz
         sha256: bd7d248de7792dd2de2089a16b7ea60f94b2056e721e1f0f1b28083f4792e902
-  - name: hwinfo
-    skip-arches:
-      - aarch64
-      - arm
-    buildsystem: simple
-    build-commands:
-      - echo '21.76' > VERSION
-      - rm -f git2log
-      - sed -i -e 's/ -g / -s /' Makefile.common
-      - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
-      - make install DESTDIR=`pwd`/INST
-      - cp -fr INST/usr/* $FLATPAK_DEST/
-    sources:
-      - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
-        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
-  - name: hwinfo
-    only-arches:
-      - aarch64
-      - arm
-    buildsystem: simple
-    build-commands:
-      - echo '21.76' > VERSION
-      - rm -f git2log
-      - sed -i -e 's/ -g / -s /' Makefile.common
-      - make
-      - make install DESTDIR=`pwd`/INST
-      - cp -fr INST/usr/* $FLATPAK_DEST/
-    sources:
-      - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
-        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
   - name: perl-uri
     buildsystem: simple
     build-commands:
@@ -412,14 +385,6 @@ modules:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
         sha256: 3aa4ac1b042b3880438165fb2b2139d377564a8e9928ffe689ede5304ee90558
-  - name: python3-qt5
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-index --find-links=file://$PWD --prefix=$FLATPAK_DEST PyQt5
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz
-        sha256: 80343bcab95ffba619f2ed2467fd828ffeb0a251ad7225be5fc06dcc333af452
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -441,13 +406,14 @@ modules:
   - name: hw-probe-pyqt5-gui
     buildsystem: simple
     build-commands:
+      - mkdir -p $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
       - mv Resources Hardware\ Probe $FLATPAK_DEST/share/hw-probe-pyqt5-gui/
       - ln -s $FLATPAK_DEST/share/hw-probe-pyqt5-gui/Hardware\ Probe $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
       - chmod 777 $FLATPAK_DEST/bin/hw-probe-pyqt5-gui
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-pyqt5-gui-1.6-AI.tar.gz
-        sha256: 0e8ff40be0e4c2655dba975546b271c2e74848bebeaeb30d09363520c2a0d201
+        sha256: 5c2400f7de0f0e8b1bbfd83f1d1f5128e34df160e3b573e78323f67df9da6688
   - name: perl-base
     buildsystem: simple
     build-commands:
@@ -460,3 +426,74 @@ modules:
       - type: archive
         url: https://www.cpan.org/src/5.0/perl-5.34.0.tar.xz
         sha256: 82c2e5e5c71b0e10487a80d79140469ab1f8056349ca8545140a224dbbed7ded
+  - name: python3-sip
+    buildsystem: simple
+    build-commands:
+      - python3 configure.py --sip-module PyQt5.sip -b ${FLATPAK_DEST}/bin -d ${FLATPAK_DEST}/lib/python3.8/site-packages -e ${FLATPAK_DEST}/include -v ${FLATPAK_DEST}/share/sip --stubsdir=${FLATPAK_DEST}/lib/python3.8/site-packages
+      - make
+      - find . -type f | perl -lne 'print if -B and -x' | xargs strip
+      - make install
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/sip-4.19.25.tar.gz
+        sha256: b39d93e937647807bac23579edbff25fe46d16213f708370072574ab1f1b4211
+  - name: PyQt5
+    cleanup:
+      - /bin/sip*
+      - /include
+      - /lib/python3.8/site-packages/*.pyi
+    config-opts:
+      - -disable-static
+      - --enable-x11
+    buildsystem: simple
+    build-commands:
+      - find ${FLATPAK_DEST}/ -name "*qmake*"
+      - python3 configure.py --confirm-license --no-docstrings --assume-shared --no-sip-files --no-designer-plugin --no-qml-plugin --no-tools --no-qsci-api --no-python-dbus --no-stubs --no-sip-files -d ${FLATPAK_DEST}/lib/python3.8/site-packages --sip=${FLATPAK_DEST}/bin/sip --sip-incdir=${FLATPAK_DEST}/include --stubsdir=${FLATPAK_DEST}/lib/python3.8/site-packages --disable=QtSensors --disable=QtWebEngine --disable=QtQuick --disable=QtQml --disable=QtTest --disable=QtWebChannel --disable=QtWebEngineCore --disable=QWebEngineWidgets --disable=QtQuickWidgets --disable=QtSql --disable=QtXmlPatterns --disable=QtMultimedia --disable=QtMultimediaWidgets --disable=QtLocation --disable=QtDesigner --disable=QtOpenGL --disable=QtBluetooth --disable=QtWebKit --disable=QtWebKitWidgets --disable=QtNfc --disable=QtPositioning --disable=QtNetwork --disable=QtSerialPort --disable=QtSvg --disable=QtX11Extras --disable=QtRemoteObjects --disable=QtDBus --disable=QtWebSockets --disable=QtPrintSupport --disable=QtHelp --disable=QtXml --disable=QtTextToSpeech
+      - make -j $(nproc)
+      - find . -type f -name "*.debug" | xargs rm -f
+      - find . -type f | perl -lne 'print if -B and -x' | xargs strip
+      - make install
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/PyQt5-5.15.4.tar.gz
+        sha256: 2a69597e0dd11caabe75fae133feca66387819fc9bc050f547e5551bce97e5be
+  - name: PyQt5_sip
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --root ${FLATPAK_DEST}
+    sources:
+      - type: archive
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/PyQt5_sip-12.9.0.tar.gz
+        sha256: d3e4489d7c2b0ece9d203ae66e573939f7f60d4d29e089c9f11daa17cfeaae32
+  - name: hwinfo
+    skip-arches:
+      - aarch64
+      - arm
+    buildsystem: simple
+    build-commands:
+      - echo '21.76' > VERSION
+      - rm -f git2log
+      - sed -i -e 's/ -g / -s /' Makefile.common
+      - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
+      - make install DESTDIR=`pwd`/INST
+      - cp -fr INST/usr/* $FLATPAK_DEST/
+    sources:
+      - type: archive
+        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
+        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
+  - name: hwinfo
+    only-arches:
+      - aarch64
+      - arm
+    buildsystem: simple
+    build-commands:
+      - echo '21.76' > VERSION
+      - rm -f git2log
+      - sed -i -e 's/ -g / -s /' Makefile.common
+      - make
+      - make install DESTDIR=`pwd`/INST
+      - cp -fr INST/usr/* $FLATPAK_DEST/
+    sources:
+      - type: archive
+        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
+        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
