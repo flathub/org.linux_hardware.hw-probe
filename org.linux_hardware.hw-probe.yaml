@@ -381,18 +381,6 @@ modules:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
         sha256: 3aa4ac1b042b3880438165fb2b2139d377564a8e9928ffe689ede5304ee90558
-  - name: perl-base
-    buildsystem: simple
-    build-commands:
-      - sh Configure -de -Dprefix=/
-      - make -j $FLATPAK_BUILDER_N_JOBS
-      - find . -type f | perl -lne 'print if -B and -x' | xargs strip
-      - install -D ./perl $FLATPAK_DEST/bin/perl
-      - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
-    sources:
-      - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.34.0.tar.xz
-        sha256: 82c2e5e5c71b0e10487a80d79140469ab1f8056349ca8545140a224dbbed7ded
   - name: python3-sip
     buildsystem: simple
     build-commands:
@@ -493,3 +481,15 @@ modules:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-pyqt5-gui-1.6-AI.tar.gz
         sha256: 76565e359c514dbe9a6b4f89ebbc334fa9061a577041818c4125a4bcfdc2d688
+  - name: perl-base
+    buildsystem: simple
+    build-commands:
+      - sh Configure -de -Dprefix=/
+      - make -j $FLATPAK_BUILDER_N_JOBS
+      - find . -type f | perl -lne 'print if -B and -x' | xargs strip
+      - install -D ./perl $FLATPAK_DEST/bin/perl
+      - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
+    sources:
+      - type: archive
+        url: https://www.cpan.org/src/5.0/perl-5.34.0.tar.xz
+        sha256: 82c2e5e5c71b0e10487a80d79140469ab1f8056349ca8545140a224dbbed7ded
