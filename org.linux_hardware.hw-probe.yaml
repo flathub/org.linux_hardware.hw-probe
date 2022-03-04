@@ -194,8 +194,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
       - type: archive
-        url: https://acpica.org/sites/acpica/files/acpica-unix-20210730.tar.gz
-        sha256: 4a0c14d5148666612aa0555c5179eaa86230602394fd1bc3d16b506fcf49b5de
+        url: https://acpica.org/sites/acpica/files/acpica-unix-20211217.tar.gz
+        sha256: 2511f85828820d747fa3e2c3433d3a38c22db3d9c2fd900e1a84eb4173cb5992
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -204,8 +204,8 @@ modules:
       - install -D INST/sbin/hdparm $FLATPAK_DEST/sbin/hdparm
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hdparm-9.62.tar.gz
-        sha256: 2c0f9d75cdbeda928a25a128cd3d0b7120445ec0910c0b29d4c1038ed1be777f
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hdparm-9.63.tar.gz
+        sha256: 70785deaebba5877a89c123568b41dee990da55fc51420f13f609a1072899691
   - name: smartmontools
     buildsystem: simple
     build-commands:
@@ -217,8 +217,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.5/smartmontools-7.2.tar.gz
-        sha256: 5cd98a27e6393168bc6aaea070d9e1cd551b0f898c52f66b2ff2e5d274118cd6
+        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/smartmontools-7.3.tar.gz
+        sha256: a544f8808d0c58cfb0e7424ca1841cb858a974922b035d505d4e4c248be3a22b
   - name: util-linux
     buildsystem: simple
     build-commands:
@@ -231,8 +231,8 @@ modules:
       - install -D ./lscpu $FLATPAK_DEST/bin/lscpu
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.xz
-        sha256: 6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.4.tar.xz
+        sha256: 634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83
   - name: libx86emu
     buildsystem: simple
     build-commands:
@@ -245,8 +245,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/wfeldt/libx86emu/archive/3.2.tar.gz
-        sha256: 4faf853cc3776bc089fe01917acf56043feb42dc7bae91f60b974b2b00b1b0f3
+        url: https://github.com/wfeldt/libx86emu/archive/3.5.tar.gz
+        sha256: 91da55f5da55017d5a80e2364de30f9520aa8df2744ff587a09ba58d6e3536c8
   - name: lex
     buildsystem: simple
     build-commands:
@@ -426,7 +426,7 @@ modules:
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.76' > VERSION
+      - echo '21.80' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
@@ -434,15 +434,15 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
-        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
+        url: https://github.com/openSUSE/hwinfo/archive/21.80.tar.gz
+        sha256: ea944271793df091af560ac6e82dcd1271aa83f22aeeada031789df1b5407ebe
   - name: hwinfo
     only-arches:
       - aarch64
       - arm
     buildsystem: simple
     build-commands:
-      - echo '21.76' > VERSION
+      - echo '21.80' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - make
@@ -450,8 +450,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/21.76.tar.gz
-        sha256: 3011f7badfadce2e3f2d0201d8be87fdb92920a80b7df57e595a6c6cc2f4968d
+        url: https://github.com/openSUSE/hwinfo/archive/21.80.tar.gz
+        sha256: ea944271793df091af560ac6e82dcd1271aa83f22aeeada031789df1b5407ebe
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -469,7 +469,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: 575ce70e7f88b186d48d4923f8844c505e456035ac6aa11ef21f740a887ffeeb
+        sha256: bbdeeafeb52ea7929d0f767c9a229808f851206b1db522f2e5a9e1ba3a793039
   - name: hw-probe-pyqt5-gui
     buildsystem: simple
     build-commands:
