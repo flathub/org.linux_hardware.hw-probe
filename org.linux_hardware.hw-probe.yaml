@@ -50,7 +50,6 @@ cleanup:
   - /sbin/update-smart-drivedb
   - /lib64/pkgconfig
   - /lib/pkgconfig
-  - /lib/debug
   - /lib/libltdl*
   - /bin/acpibin
   - /bin/acpiexamples
