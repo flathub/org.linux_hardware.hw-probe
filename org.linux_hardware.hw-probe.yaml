@@ -11,7 +11,8 @@ finish-args:
   - --filesystem=/sys:ro
   - --filesystem=/dev
   - --socket=wayland
-  - --socket=x11
+  - --socket=fallback-x11
+  - --share=ipc
   - --env=PATH=/usr/bin:/bin:/usr/sbin:/sbin:/app/bin:/app/sbin
   - --env=PERL5LIB=/app/share/perl5:/app/lib/x86_64-linux-gnu/perl-base:/app/lib/i386-linux-gnu/perl-base
   - --env=LD_LIBRARY_PATH=/app/lib/x86_64-linux-gnu/:/app/lib/i386-linux-gnu/:/app/lib64:/app/lib
