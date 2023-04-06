@@ -114,8 +114,8 @@ modules:
       - make install prefix=/ DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.4.tar.xz
-        sha256: 43cba851d8467c9979ccdbeab192eb6638c7d3a697eba5ddb779da8837542212
+        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.5.tar.xz
+        sha256: 79d76735ee8e25196e2a722964cf9683f5a09581503537884b256b01389cc073
   - name: iproute2
     buildsystem: simple
     build-commands:
@@ -194,8 +194,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/acpica-unix-20221022.tar.gz
-        sha256: 1aa17eb1779cd171110074ce271a65c06046eacbba7be7ce5ee71df1b31c3b86
+        url: https://acpica.org/sites/acpica/files/acpica-unix-20230331.tar.gz
+        sha256: 0c5d695d605aaa61709f3c63f57a1a99b8902291723998446b0813b57ac310e2
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -508,7 +508,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: 8a826d0d36f594542699d26d63b7ce14761f9f0c8bc932429082a120843c637d
+        sha256: 7359e4d39e3f4046cf83c0ed453d0cad1001316aa78d2fa94d5ea9de0204e14d
   - name: hw-probe-pyqt6-gui
     buildsystem: simple
     build-commands:
