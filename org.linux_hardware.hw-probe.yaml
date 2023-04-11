@@ -508,7 +508,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: 7359e4d39e3f4046cf83c0ed453d0cad1001316aa78d2fa94d5ea9de0204e14d
+        sha256: 8b955796cb09a240508072748aa971e0e8d9cac4bfff4bb3f31209fd3fd3d9ff
   - name: hw-probe-pyqt6-gui
     buildsystem: simple
     build-commands:
