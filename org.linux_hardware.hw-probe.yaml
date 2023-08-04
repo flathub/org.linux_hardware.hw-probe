@@ -227,7 +227,7 @@ modules:
       - make -j $FLATPAK_BUILDER_N_JOBS dmesg
       - make -j $FLATPAK_BUILDER_N_JOBS lscpu
       - make -j $FLATPAK_BUILDER_N_JOBS lsblk
-      - find . -type f | perl -lne 'print if -B and -x' | xargs strip
+      - find . -type f | grep -v img.xz | perl -lne 'print if -B and -x' | xargs strip
       - install -D ./dmesg $FLATPAK_DEST/bin/dmesg
       - install -D ./lscpu $FLATPAK_DEST/bin/lscpu
       - install -D ./lsblk $FLATPAK_DEST/bin/lsblk
