@@ -269,8 +269,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/E/ET/ETHER/URI-5.08.tar.gz
-        sha256: 7e2c6fe3b1d5947da334fa558a96e748aaa619213b85bcdce5b5347d4d26c46e
+        url: https://www.cpan.org/modules/by-module/URI/URI-5.19.tar.gz
+        sha256: 8fed5f819905c8a8e18f4447034322d042c3536b43c13ac1f09ba92e1a50a394
   - name: perl-http-message
     buildsystem: simple
     build-commands:
@@ -280,8 +280,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-6.37.tar.gz
-        sha256: 0e59da0a85e248831327ebfba66796314cb69f1bfeeff7a9da44ad766d07d802
+        url: https://www.cpan.org/modules/by-module/HTTP/HTTP-Message-6.44.tar.gz
+        sha256: 398b647bf45aa972f432ec0111f6617742ba32fc773c6612d21f64ab4eacbca1
   - name: perl-net-http
     buildsystem: simple
     build-commands:
@@ -291,8 +291,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Net-HTTP-6.22.tar.gz
-        sha256: 62faf9a5b84235443fe18f780e69cecf057dea3de271d7d8a0ba72724458a1a2
+        url: https://www.cpan.org/modules/by-module/LWP/OALDERS/Net-HTTP-6.23.tar.gz
+        sha256: 0d65c09dd6c8589b2ae1118174d3c1a61703b6ecfc14a3442a8c74af65e0c94e
   - name: perl-try-tiny
     buildsystem: simple
     build-commands:
@@ -313,8 +313,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/G/GA/GAAS/LWP-MediaTypes-6.02.tar.gz
-        sha256: 18790b0cc5f0a51468495c3847b16738f785a2d460403595001e0b932e5db676
+        url: https://www.cpan.org/modules/by-module/LWP/LWP-MediaTypes-6.04.tar.gz
+        sha256: 8f1bca12dab16a1c2a7c03a49c5e58cce41a6fec9519f0aadfba8dad997919d9
   - name: perl-http-date
     buildsystem: simple
     build-commands:
@@ -324,8 +324,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/G/GA/GAAS/HTTP-Date-6.02.tar.gz
-        sha256: e8b9941da0f9f0c9c01068401a5e81341f0e3707d1c754f8e11f42a7e629e333
+        url: https://www.cpan.org/modules/by-module/LWP/OALDERS/HTTP-Date-6.06.tar.gz
+        sha256: 7b685191c6acc3e773d1fc02c95ee1f9fae94f77783175f5e78c181cc92d2b52
   - name: perl-timedate
     buildsystem: simple
     build-commands:
@@ -335,8 +335,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/G/GB/GBARR/TimeDate-2.30.tar.gz
-        sha256: 75bd254871cb5853a6aa0403ac0be270cdd75c9d1b6639f18ecba63c15298e86
+        url: ttps://www.cpan.org/modules/by-module/Time/TimeDate-2.33.tar.gz
+        sha256: c0b69c4b039de6f501b0d9f13ec58c86b040c1f7e9b27ef249651c143d605eb2
   - name: libwww-perl
     buildsystem: simple
     build-commands:
@@ -346,8 +346,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/E/ET/ETHER/libwww-perl-6.36.tar.gz
-        sha256: 75c034ab4b37f4b9506dc644300697505582cf9545bcf2e2079e7263f675290a
+        url: https://www.cpan.org/modules/by-module/LWP/libwww-perl-6.72.tar.gz
+        sha256: e9b8354fd5e20be207afe23ddd584fcd59bf82998dc077decf684ba1dae5a05d
   - name: perl-parent
     buildsystem: simple
     build-commands:
@@ -357,8 +357,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.238.tar.gz
-        sha256: 38f58fdef3e28a194c9c8d0dc5d02672faf93c069f40c5bcb1fabeadbbc4d2d1
+        url: https://cpan.metacpan.org/authors/id/C/CO/CORION/parent-0.241.tar.gz
+        sha256: b10b3960ab3997dab7571ffe975ba462d979d086450740a1e08b3959e75128fe
   - name: perl-time-local
     buildsystem: simple
     build-commands:
@@ -368,8 +368,8 @@ modules:
       - cp -fr ./INST/SITELIB/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Time-Local-1.30.tar.gz
-        sha256: c7744f6b2986b946d3e2cf034df371bee16cdbafe53e945abb1a542c4f8920cb
+        url: https://www.cpan.org/modules/by-module/Time/Time-Local-1.35.tar.gz
+        sha256: 1d136b71bd041cbe6f66c43180ee79e675b72ad5a3596abd6a44d211072ada29
   - name: perl-data-dumper
     buildsystem: simple
     build-commands:
@@ -381,8 +381,8 @@ modules:
       - cp -fr ./INST/usr/lib/perl5/*/* $FLATPAK_DEST/share/perl5/
     sources:
       - type: archive
-        url: https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Data-Dumper-2.161.tar.gz
-        sha256: 3aa4ac1b042b3880438165fb2b2139d377564a8e9928ffe689ede5304ee90558
+        url: https://www.cpan.org/modules/by-module/Data/Data-Dumper-2.183.tar.gz
+        sha256: e42736890b7dae1b37818d9c5efa1f1fdc52dec04f446a33a4819bf1d4ab5ad3
   - name: PyQt6
     buildsystem: simple
     build-commands:
@@ -465,7 +465,7 @@ modules:
       - arm
     buildsystem: simple
     build-commands:
-      - echo '22.1' > VERSION
+      - echo '23.2' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - CFLAGS='-I'$FLATPAK_DEST'/include' LDFLAGS='-L'$FLATPAK_DEST'/lib64 -L'$FLATPAK_DEST'/lib -lx86emu' LD_LIBRARY_PATH=$FLATPAK_DEST'/lib64:'$FLATPAK_DEST'/lib' make
@@ -473,15 +473,15 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/22.1.tar.gz
-        sha256: 58fd8ed9b704e4622f5ae28e0b240f905516c255c7d2695169fb2b9dd6d549a9
+        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
+        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
   - name: hwinfo
     only-arches:
       - aarch64
       - arm
     buildsystem: simple
     build-commands:
-      - echo '22.1' > VERSION
+      - echo '23.2' > VERSION
       - rm -f git2log
       - sed -i -e 's/ -g / -s /' Makefile.common
       - make
@@ -489,8 +489,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/22.1.tar.gz
-        sha256: 58fd8ed9b704e4622f5ae28e0b240f905516c255c7d2695169fb2b9dd6d549a9
+        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
+        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -530,5 +530,5 @@ modules:
       - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
     sources:
       - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.36.0.tar.xz
-        sha256: 0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0
+        url: https://www.cpan.org/src/5.0/perl-5.38.0.tar.xz
+        sha256: eca551caec3bc549a4e590c0015003790bdd1a604ffe19cc78ee631d51f7072e
