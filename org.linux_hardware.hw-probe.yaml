@@ -473,8 +473,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/22.1.tar.gz
-        sha256: 58fd8ed9b704e4622f5ae28e0b240f905516c255c7d2695169fb2b9dd6d549a9
+        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
+        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
   - name: hwinfo
     only-arches:
       - aarch64
@@ -489,8 +489,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/22.1.tar.gz
-        sha256: 58fd8ed9b704e4622f5ae28e0b240f905516c255c7d2695169fb2b9dd6d549a9
+        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
+        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -508,7 +508,7 @@ modules:
     sources:
       - type: archive
         url: https://github.com/linuxhw/build-stuff/releases/download/1.6/hw-probe-1.6-AI.tar.gz
-        sha256: 8b955796cb09a240508072748aa971e0e8d9cac4bfff4bb3f31209fd3fd3d9ff
+        sha256: 4855a49a42c0ebe4cdadd8fd2217137d6f3643a662ad3b7c1f34a5c1b61859d2
   - name: hw-probe-pyqt6-gui
     buildsystem: simple
     build-commands:
