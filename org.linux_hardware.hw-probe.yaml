@@ -409,8 +409,8 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://github.com/linuxhw/build-stuff/releases/download/1.6/sip-6.5.1.tar.gz
-            sha256: 204f0240db8999a749d638a987b351861843e69239b811ec3d1881412c3706a6
+            url: https://files.pythonhosted.org/packages/3e/f5/85bfb3c716b8eda9e2b0c0c5f36acb701746045c828a4497a44e581db3a6/sip-6.8.5.tar.gz
+            sha256: 5dddd5966e9875d89ecde9d3e6ac63225f9972e4d25c09e20fa22f1819409c70
         modules:
           - name: python-toml
             buildsystem: simple
@@ -418,16 +418,16 @@ modules:
                 - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
             sources:
                 - type: archive
-                  url: https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.0.tar.gz
-                  sha256: 229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c
+                  url: https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.2.tar.gz
+                  sha256: b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
           - name: python-packaging
             buildsystem: simple
             build-commands:
                 - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
             sources:
                 - type: archive
-                  url: https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.1.tar.gz
-                  sha256: e665345f9eef0c621aa0bf2f8d78cf6d21904eef16a93f020240b704a57f1334
+                  url: https://files.pythonhosted.org/packages/source/p/packaging/packaging-24.1.tar.gz
+                  sha256: 026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002
             cleanup:
                 - "*"
       - name: PyQt6_sip
@@ -436,16 +436,16 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://github.com/linuxhw/build-stuff/releases/download/1.6/PyQt6_sip-13.2.1.tar.gz
-            sha256: b7bce59900b2e0a04f70246de2ccf79ee7933036b6b9183cf039b62eeae2b858
+            url: https://files.pythonhosted.org/packages/98/23/e54e02a44afc357ccab1b88575b90729664164358ceffde43e4f2e549daa/PyQt6_sip-13.6.0.tar.gz
+            sha256: 2486e1588071943d4f6657ba09096dc9fffd2322ad2c30041e78ea3f037b5778
       - name: python-pyparsing
         buildsystem: simple
         build-commands:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.6.tar.gz
-            sha256: 4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f
+            url: https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-3.1.2.tar.gz
+            sha256: a1bac0ce561155ecc3ed78ca94d3c9378656ad4c94c1270de543f621420f94ad
         cleanup:
           - "*"
       - name: PyQt-builder
@@ -454,8 +454,8 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz
-            sha256: f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7
+            url: https://files.pythonhosted.org/packages/f0/73/9e2755469405520b38162a4f594db1e0a28e2d29ab367acba1cd3c0783b5/pyqt_builder-1.16.3.tar.gz
+            sha256: 3ce5c03dc3fc856b782da3f53b4f3f3b6556aad7bd8416d7bbfc274d03bcf032
         cleanup:
         - "*"
   - name: hwinfo
