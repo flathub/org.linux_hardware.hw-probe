@@ -1,6 +1,6 @@
 app-id: org.linux_hardware.hw-probe
 runtime: org.kde.Platform
-runtime-version: "6.3"
+runtime-version: "6.7"
 sdk: org.kde.Sdk
 command: hw-probe
 finish-args:
@@ -82,8 +82,8 @@ modules:
       - make install
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/automake/automake-1.15.tar.xz
-        sha256: 9908c75aabd49d13661d6dcb1bc382252d22cc77bf733a2d55e87f2aa2db8636
+        url: https://ftp.gnu.org/gnu/automake/automake-1.17.tar.xz
+        sha256: 8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990
   - name: libtool
     buildsystem: simple
     build-commands:
@@ -92,18 +92,15 @@ modules:
       - make install
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.xz
-        sha256: 7c87a8c2c8c0fc9cd5019e402bed4292462d00a718a7cd5f11218153bf28b26f
+        url: https://ftp.gnu.org/gnu/libtool/libtool-2.5.3.tar.xz
+        sha256: 898011232cc59b6b3bbbe321b60aba9db1ac11578ab61ed0df0299458146ae2e
   - name: edid-decode
-    buildsystem: simple
-    build-commands:
-      - sed -i -e 's/ -g / -s /' Makefile
-      - make -j $FLATPAK_BUILDER_N_JOBS
-      - make install DESTDIR=$FLATPAK_DEST bindir=/bin mandir=/share/man
+    buildsystem: meson
     sources:
-      - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.4/edid-decode-20180622.tar.gz
-        sha256: ab44c58a3712beca8ffa0ac937dc24d337cb0ecd18e703b4ddf3a10b0df35e1e
+      - type: git
+        url: https://git.linuxtv.org/edid-decode.git
+        branch: master
+        commit: 8fd97f32c8f25b6560a5766066218a72ad2e2a01
   - name: dmidecode
     buildsystem: simple
     build-commands:
@@ -113,8 +110,8 @@ modules:
       - make install prefix=/ DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.5.tar.xz
-        sha256: 79d76735ee8e25196e2a722964cf9683f5a09581503537884b256b01389cc073
+        url: https://download-mirror.savannah.gnu.org/releases/dmidecode/dmidecode-3.6.tar.xz
+        sha256: e40c65f3ec3dafe31ad8349a4ef1a97122d38f65004ed66575e1a8d575dd8bae
   - name: iproute2
     buildsystem: simple
     build-commands:
@@ -124,8 +121,8 @@ modules:
       - install -D ./ip/ip $FLATPAK_DEST/sbin/ip
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-5.9.0.tar.xz
-        sha256: a25dac94bcdcf2f73316c7f812115ea7a5710580bad892b08a83d00c6b33dacf
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/net/iproute2/iproute2-6.11.0.tar.xz
+        sha256: 1f795398a04aeaacd06a8f6ace2cfd913c33fa5953ca99daae83bb5c534611c3
   - name: lm-sensors
     buildsystem: simple
     build-commands:
@@ -148,8 +145,8 @@ modules:
       - install -D ./tools/lsmod $FLATPAK_DEST/bin/lsmod
     sources:
       - type: archive
-        url: https://cdn.kernel.org/pub/linux/utils/kernel/kmod/kmod-12.tar.xz
-        sha256: c6189dd8c5a1e8d9224e8506bd188c0cd5dfa119fd6b7e5869b3640cbe8bf92f
+        url: https://cdn.kernel.org/pub/linux/utils/kernel/kmod/kmod-33.tar.xz
+        sha256: dc768b3155172091f56dc69430b5481f2d76ecd9ccb54ead8c2540dbcf5ea9bc
   - name: libusb-1
     buildsystem: simple
     build-commands:
@@ -161,8 +158,8 @@ modules:
       - make install DESTDIR=$FLATPAK_DEST
     sources:
       - type: archive
-        url: https://github.com/libusb/libusb/archive/v1.0.22.tar.gz
-        sha256: 3500f7b182750cd9ccf9be8b1df998f83df56a39ab264976bdb3307773e16f48
+        url: https://github.com/libusb/libusb/archive/v1.0.27.tar.gz
+        sha256: e8f18a7a36ecbb11fb820bd71540350d8f61bcd9db0d2e8c18a6fb80b214a3de
   - name: usbutils
     buildsystem: simple
     build-commands:
@@ -175,8 +172,8 @@ modules:
       - sed -i -e 's|/share/usb.ids|/var/tmp/P_USB|' $FLATPAK_DEST/bin/lsusb
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/usb/usbutils/usbutils-007.tar.xz
-        sha256: 7593a01724bbc0fd9fe48e62bc721ceb61c76654f1d7b231b3c65f6dfbbaefa4
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/usb/usbutils/usbutils-018.tar.xz
+        sha256: 83f68b59b58547589c00266e82671864627593ab4362d8c807f50eea923cad93
   - name: pciutils
     buildsystem: simple
     build-commands:
@@ -184,17 +181,18 @@ modules:
       - sed -i -e 's|/share/pci.ids|/var/tmp/P_PCI|' $FLATPAK_DEST/sbin/lspci
     sources:
       - type: archive
-        url: https://github.com/pciutils/pciutils/archive/v3.6.2.tar.gz
-        sha256: d84d7096a71890f0ddddc50e88ac5a3bc7412bf48d8100fc15857a411564687d
+        url: https://github.com/pciutils/pciutils/archive/v3.13.0.tar.gz
+        sha256: 861fc26151a4596f5c3cb6f97d6c75c675051fa014959e26fb871c8c932ebc67
   - name: acpica-unix
     buildsystem: simple
     build-commands:
       - make -j $FLATPAK_BUILDER_N_JOBS
       - make install DESTDIR=$FLATPAK_DEST PREFIX=/
     sources:
-      - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/acpica-unix-20230628.tar.gz
-        sha256: 86876a745e3d224dcfd222ed3de465b47559e85811df2db9820ef09a9dff5cce
+      - type: git
+        url: https://github.com/deepin-community/acpica-unix.git
+        branch: master
+        commit: 9f26014f956be5f981acab4458fd2328acd2a605
   - name: hdparm
     buildsystem: simple
     build-commands:
@@ -232,8 +230,8 @@ modules:
       - install -D ./lsblk $FLATPAK_DEST/bin/lsblk
     sources:
       - type: archive
-        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.1.tar.xz
-        sha256: 890ae8ff810247bd19e274df76e8371d202cda01ad277681b0ea88eeaa00286b
+        url: https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.4.tar.xz
+        sha256: 6c4f8723dafd41c39d93ecbf16509fc88c33cd5bd3277880ae5a1d97a014fd0e
   - name: libx86emu
     buildsystem: simple
     build-commands:
@@ -257,8 +255,8 @@ modules:
       - install -D src/flex $FLATPAK_DEST/bin/lex
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.4/flex-20181004.tar.gz
-        sha256: bd7d248de7792dd2de2089a16b7ea60f94b2056e721e1f0f1b28083f4792e902
+        url: https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/flex/2.6.4-8.2build1/flex_2.6.4.orig.tar.gz
+        sha256: e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995
   - name: perl-uri
     buildsystem: simple
     build-commands:
@@ -400,8 +398,8 @@ modules:
         --enable=QtWidgets
     sources:
       - type: archive
-        url: https://github.com/linuxhw/build-stuff/releases/download/1.6/PyQt6-6.2.3.tar.gz
-        sha256: a9bfcac198fe4b703706f809bb686c7cef5f60a7c802fc145c6b57929c7a6a34
+        url: https://files.pythonhosted.org/packages/d1/f9/b0c2ba758b14a7219e076138ea1e738c068bf388e64eee68f3df4fc96f5a/PyQt6-6.7.1.tar.gz
+        sha256: 3672a82ccd3a62e99ab200a13903421e2928e399fda25ced98d140313ad59cb9
     modules:
       - name: python3-sip
         buildsystem: simple
@@ -409,8 +407,8 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://github.com/linuxhw/build-stuff/releases/download/1.6/sip-6.5.1.tar.gz
-            sha256: 204f0240db8999a749d638a987b351861843e69239b811ec3d1881412c3706a6
+            url: https://files.pythonhosted.org/packages/6e/52/36987b182711104d5e9f8831dd989085b1241fc627829c36ddf81640c372/sip-6.8.6.tar.gz
+            sha256: 7fc959e48e6ec5d5af8bd026f69f5e24d08b3cb8abb342176f5ab8030cc07d7a
         modules:
           - name: python-toml
             buildsystem: simple
@@ -418,16 +416,16 @@ modules:
                 - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
             sources:
                 - type: archive
-                  url: https://files.pythonhosted.org/packages/source/t/toml/toml-0.10.0.tar.gz
-                  sha256: 229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c
+                  url: https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz
+                  sha256: b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
           - name: python-packaging
             buildsystem: simple
             build-commands:
                 - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
             sources:
                 - type: archive
-                  url: https://files.pythonhosted.org/packages/source/p/packaging/packaging-20.1.tar.gz
-                  sha256: e665345f9eef0c621aa0bf2f8d78cf6d21904eef16a93f020240b704a57f1334
+                  url: https://files.pythonhosted.org/packages/51/65/50db4dda066951078f0a96cf12f4b9ada6e4b811516bf0262c0f4f7064d4/packaging-24.1.tar.gz
+                  sha256: 026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002
             cleanup:
                 - "*"
       - name: PyQt6_sip
@@ -436,16 +434,16 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://github.com/linuxhw/build-stuff/releases/download/1.6/PyQt6_sip-13.2.1.tar.gz
-            sha256: b7bce59900b2e0a04f70246de2ccf79ee7933036b6b9183cf039b62eeae2b858
+            url: https://files.pythonhosted.org/packages/e9/b7/95ac49b181096ef40144ef05aff8de7c9657de7916a70533d202ed9f0fd2/PyQt6_sip-13.8.0.tar.gz
+            sha256: 2f74cf3d6d9cab5152bd9f49d570b2dfb87553ebb5c4919abfde27f5b9fd69d4
       - name: python-pyparsing
         buildsystem: simple
         build-commands:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-2.4.6.tar.gz
-            sha256: 4c830582a84fb022400b85429791bc551f1f4871c33f23e44f353119e92f969f
+            url: https://files.pythonhosted.org/packages/8c/d5/e5aeee5387091148a19e1145f63606619cb5f20b83fccb63efae6474e7b2/pyparsing-3.2.0.tar.gz
+            sha256: cbf74e27246d595d9a74b186b810f6fbb86726dbf3b9532efb343f6d7294fe9c
         cleanup:
           - "*"
       - name: PyQt-builder
@@ -454,8 +452,8 @@ modules:
           - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
         sources:
           - type: archive
-            url: https://files.pythonhosted.org/packages/8b/5f/1bd49787262ddce37b826ef49dcccf5a9970facf0ed363dee5ee233e681d/PyQt-builder-1.12.2.tar.gz
-            sha256: f62bb688d70e0afd88c413a8d994bda824e6cebd12b612902d1945c5a67edcd7
+            url: https://files.pythonhosted.org/packages/e6/f5/daead7fd8ef3675ce55f4ef66dbe3287b0bdd74315f6b5a57718a020570b/pyqt_builder-1.16.4.tar.gz
+            sha256: 4515e41ae379be2e54f88a89ecf47cd6e4cac43e862c4abfde18389c2666afdf
         cleanup:
         - "*"
   - name: hwinfo
@@ -472,8 +470,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
-        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
+        url: https://github.com/openSUSE/hwinfo/archive/23.3.tar.gz
+        sha256: ee7f1cb15bde7d6d40cc5f70e382dbaa8264a12f0b1692eba23f14ea146c0e0d
   - name: hwinfo
     only-arches:
       - aarch64
@@ -488,8 +486,8 @@ modules:
       - cp -fr INST/usr/* $FLATPAK_DEST/
     sources:
       - type: archive
-        url: https://github.com/openSUSE/hwinfo/archive/23.2.tar.gz
-        sha256: 1ffc00d07aa1ad766e861d0d8492e2d2fa52cf537807f34e1c80e8c2d56c7115
+        url: https://github.com/openSUSE/hwinfo/archive/23.3.tar.gz
+        sha256: ee7f1cb15bde7d6d40cc5f70e382dbaa8264a12f0b1692eba23f14ea146c0e0d
   - name: hw-probe
     buildsystem: simple
     build-commands:
@@ -529,5 +527,5 @@ modules:
       - cd lib && cat $FLATPAK_DEST/share/PERL5_BASE | while read i; do mkdir -p $FLATPAK_DEST/share/perl5/`dirname $i`; cp -fr $i $FLATPAK_DEST/share/perl5/$i; done
     sources:
       - type: archive
-        url: https://www.cpan.org/src/5.0/perl-5.36.0.tar.xz
-        sha256: 0f386dccbee8e26286404b2cca144e1005be65477979beb9b1ba272d4819bcf0
+        url: https://www.cpan.org/src/5.0/perl-5.40.0.tar.gz
+        sha256: c740348f357396327a9795d3e8323bafd0fe8a5c7835fc1cbaba0cc8dfe7161f
